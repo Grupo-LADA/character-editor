@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router'
+import HomeLayout from '@/layouts/HomeLayout'
 
 export const Route = createFileRoute('/')({
   component: App,
 })
 
 function App() {
-  return <div className="flex min-h-screen text-center">aaa</div>
+  return <HomeLayout>aaa</HomeLayout>
 }
