@@ -5,7 +5,7 @@ export default function Navbar() {
     <header className="fixed flex h-12 w-full items-center justify-between gap-2 bg-black px-4 text-white">
       <nav className="flex flex-row">
         <Link to="/" className="font-bold">
-          character-edit
+          character-editor
         </Link>
       </nav>
     </header>
