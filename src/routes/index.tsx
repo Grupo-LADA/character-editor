@@ -9,6 +9,7 @@ import {
 import { useCharacterSwitch } from '@/hooks/useCharacterSwitch'
 import HomeLayout from '@/layouts/HomeLayout'
 import { createFileRoute } from '@tanstack/react-router'
+import { AnimatePresence } from 'framer-motion'
 
 export const Route = createFileRoute('/')({
   component: App,
@@ -25,28 +26,50 @@ function App() {
       <div className="flex flex-col gap-4">
         <strong>Editor de personagem</strong>
         <div className="flex flex-col items-center justify-center gap-4 border-2 border-black p-4">
-          <div className="relative">
-            <CharacterContainer className="h-48 w-16 z-0" id="body-type">
-              {bodyType.id}
-            </CharacterContainer>
-            <CharacterContainer
-              className="absolute h-8 w-16 z-3 top-0"
-              id="hair-type"
-            >
-              {hairType.id}
-            </CharacterContainer>
-            <CharacterContainer
-              className="absolute h-18 w-16 z-3 top-12"
-              id="upper-body-type"
-            >
-              {upperBody.id}
-            </CharacterContainer>
-            <CharacterContainer
-              className="absolute h-18 w-16 z-3 bottom-0"
-              id="lower-body-type"
-            >
-              {lowerBody.id}
-            </CharacterContainer>
+          <div className="relative w-full flex justify-center">
+            <AnimatePresence mode="wait">
+              <CharacterContainer
+                className="h-48 w-16 z-0"
+                id="body-type"
+                key={'body-type-' + bodyType.id}
+                direction={bodyType.direction}
+              >
+                {bodyType.id}
+              </CharacterContainer>
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+              <CharacterContainer
+                className="absolute h-8 w-16 z-3 top-0"
+                id="hair-type"
+                key={'hair-type-' + hairType.id}
+                direction={hairType.direction}
+              >
+                {hairType.id}
+              </CharacterContainer>
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+              <CharacterContainer
+                className="absolute h-18 w-16 z-3 top-12"
+                id="upper-body-type"
+                key={'upper-body-type-' + upperBody.id}
+                direction={upperBody.direction}
+              >
+                {upperBody.id}
+              </CharacterContainer>
+            </AnimatePresence>
+
+            <AnimatePresence mode="wait">
+              <CharacterContainer
+                className="absolute h-18 w-16 z-3 bottom-0"
+                id="lower-body-type"
+                key={'lower-body-type-' + lowerBody.id}
+                direction={lowerBody.direction}
+              >
+                {lowerBody.id}
+              </CharacterContainer>
+            </AnimatePresence>
           </div>
           <div className="flex flex-col gap-2">
             <CharacterComponentSwitcher

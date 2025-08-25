@@ -18,6 +18,7 @@ export type CharacterComponent = {
 
 export type CharacterComponentHook = {
   id: number
+  direction: 'increase' | 'decrease'
   increase: () => void
   decrease: () => void
 }
